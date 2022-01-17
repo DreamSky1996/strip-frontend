@@ -165,12 +165,17 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
 
     allowance = await reserveContract.allowance(address, bond.getAddressForBond(networkID));
     balance = await reserveContract.balanceOf(address);
+    
     const balanceVal = ethers.utils.formatEther(balance);
 
     const avaxBalance = await provider.getSigner().getBalance();
     const avaxVal = ethers.utils.formatEther(avaxBalance);
 
     const pendingPayoutVal = ethers.utils.formatUnits(pendingPayout, "gwei");
+    let _balance = Number(balanceVal);
+    if (bondContract.address === "0xA40C72Fd2B7d49588D65d86cbAA551c105C0Af96") {
+        _balance = _balance * Math.pow(10, 12);
+    }
 
     return {
         bond: bond.name,
@@ -178,7 +183,7 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
         bondIconSvg: bond.bondIconSvg,
         isLP: bond.isLP,
         allowance: Number(allowance),
-        balance: Number(balanceVal),
+        balance: _balance,
         avaxBalance: Number(avaxVal),
         interestDue,
         bondMaturationBlock,

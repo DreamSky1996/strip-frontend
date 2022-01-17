@@ -114,7 +114,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
 
     const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
     let marketPrice = await getMarketPrice(networkID, provider);
-    const mimPrice = getTokenPrice("MIM");
+    const mimPrice = getTokenPrice("USDT");
     marketPrice = (marketPrice / Math.pow(10, 9)) * mimPrice;
 
     try {
@@ -125,7 +125,8 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
             bondPrice = bondPrice * avaxPrice;
         }
 
-        bondDiscount = (marketPrice * Math.pow(10, 18) - bondPrice) / bondPrice;
+        // bondDiscount = (marketPrice * Math.pow(10, 18) - bondPrice) / bondPrice;
+        bondDiscount = (marketPrice * Math.pow(10, 6) - bondPrice) / bondPrice;
     } catch (e) {
         console.log("error getting bondPriceInUSD", e);
     }
@@ -172,7 +173,8 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         if (bond.tokensInStrategy) {
             purchased = BigNumber.from(purchased).add(BigNumber.from(bond.tokensInStrategy)).toString();
         }
-        purchased = purchased / Math.pow(10, 18);
+        // purchased = purchased / Math.pow(10, 18);
+        purchased = purchased / Math.pow(10, 6);
 
         if (bond.name === wavax.name) {
             const avaxPrice = getTokenPrice("AVAX");
@@ -187,7 +189,8 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         purchased,
         vestingTerm: Number(terms.vestingTerm),
         maxBondPrice,
-        bondPrice: bondPrice / Math.pow(10, 18),
+        // bondPrice: bondPrice / Math.pow(10, 18),
+        bondPrice: bondPrice / Math.pow(10, 6),
         marketPrice,
         maxBondPriceToken,
     };
@@ -205,9 +208,15 @@ interface IBondAsset {
 export const bondAsset = createAsyncThunk("bonding/bondAsset", async ({ value, address, bond, networkID, provider, slippage, useAvax }: IBondAsset, { dispatch }) => {
     const depositorAddress = address;
     const acceptedSlippage = slippage / 100 || 0.005;
-    const valueInWei = ethers.utils.parseUnits(value, "ether");
+    
+    // const valueInWei = ethers.utils.parseUnits(value, "ether");
+    
     const signer = provider.getSigner();
     const bondContract = bond.getContractForBond(networkID, signer);
+    let valueInWei = ethers.utils.parseUnits(value, "ether");
+    if (bondContract.address === "0xA40C72Fd2B7d49588D65d86cbAA551c105C0Af96") {
+        valueInWei = ethers.utils.parseUnits(value, 6);   
+    }
 
     const calculatePremium = await bondContract.bondPrice();
     const maxPremium = Math.round(calculatePremium * (1 + acceptedSlippage));

@@ -26,8 +26,21 @@ const AVAX_TESTNET = {
     WSKANDY_ADDRESS: "0xEc8137F20b2E356bdE56A07C360d975bd4b6476E", // *****
 };
 
+const RINKEBY_TESTNET = {
+    DAO_ADDRESS: "0x012bAbB7632f5F7d3d6E68edea4bdc53Eb537C8a", // 
+    SKANDY_ADDRESS: "0x90317383A3b491B025942e606D52EE73Da3C9572", // 
+    KANDY_ADDRESS: "0x4d9b733Cc3d30f0fD64b3746d452e035aDbDF43f", //
+    MIM_ADDRESS: "0xaCc58E44C73394c2FC12af9697bFD1D790ecA4B9", // 
+    STAKING_ADDRESS: "0x6286c3c2ad15720cB75Abc4cb44bF58956b0d14E", // 
+    STAKING_HELPER_ADDRESS: "0x79EfC34B4eDec1175eAa68ac727615E5dB7336df", // 
+    KANDY_BONDING_CALC_ADDRESS: "0xf5de6CbcfE98D44a46F8648895aa1046c0AdFF88", // 
+    TREASURY_ADDRESS: "0xdfddb8B260916cE081E1Ead4B8bDcD0451B1621B", // 
+    ZAPIN_ADDRESS: "0x9ABE63C5A2fBcd54c8bAec3553d326356a530cae", // ??????????????????
+    WSKANDY_ADDRESS: "", // *****
+};
+
 export const getAddresses = (networkID: number) => {
-    if (networkID === Networks.AVAX) return AVAX_TESTNET;
+    if (networkID === Networks.RINKEBY) return RINKEBY_TESTNET;
 
     throw Error("Network don't support");
 };

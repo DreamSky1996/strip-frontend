@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Box, Slide } from "@material-ui/core";
 import { IBondDetails, redeemBond } from "../../store/slices/bond-slice";
 import { useWeb3Context } from "../../hooks";
-import { trim, prettifySeconds, prettyVestingPeriod } from "../../helpers";
+import { trim, prettifySecondsForEther, prettyVestingPeriod } from "../../helpers";
 import { IPendingTxn, isPendingTxn, txnButtonText } from "../../store/slices/pending-txns-slice";
 import { Skeleton } from "@material-ui/lab";
 import { IReduxState } from "../../store/slices/state.interface";
@@ -56,7 +56,7 @@ function BondRedeem({ bond }: IBondRedeem) {
     };
 
     const vestingPeriod = () => {
-        return prettifySeconds(bondingState.vestingTerm, "day");
+        return prettifySecondsForEther(bondingState.vestingTerm, "day");
     };
 
     return (

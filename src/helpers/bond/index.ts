@@ -10,16 +10,16 @@ import AvaxTimeIcon from "../../assets/tokens/KANDY-AVAX.png";
 import { StableBondContract, LpBondContract, WavaxBondContract, StableReserveContract, LpReserveContract } from "../../abi";
 
 export const mim = new StableBond({
-    name: "mim",
-    displayName: "MIM",
-    bondToken: "MIM",
+    name: "usdt",
+    displayName: "USDT",
+    bondToken: "USDT",
     bondIconSvg: MimIcon,
     bondContractABI: StableBondContract,
     reserveContractAbi: StableReserveContract,
     networkAddrs: {
-        [Networks.AVAX]: {
-            bondAddress: "0x90317383A3b491B025942e606D52EE73Da3C9572",
-            reserveAddress: "0x1BFA78D76256d3b00FB13745cfC3934301cb6d8f",
+        [Networks.RINKEBY]: {
+            bondAddress: "0xA40C72Fd2B7d49588D65d86cbAA551c105C0Af96",
+            reserveAddress: "0xaCc58E44C73394c2FC12af9697bFD1D790ecA4B9",
         },
     },
     tokensInStrategy: "",
@@ -34,9 +34,9 @@ export const wavax = new CustomBond({
     bondContractABI: WavaxBondContract,
     reserveContractAbi: StableReserveContract,
     networkAddrs: {
-        [Networks.AVAX]: {
-            bondAddress: "0x3c9eA1a1c635907988D434f4eF249CDBA2f76e25",
-            reserveAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+        [Networks.RINKEBY]: {
+            bondAddress: "",
+            reserveAddress: "",
         },
     },
     tokensInStrategy: "",
@@ -51,9 +51,9 @@ export const mimKandy = new LPBond({
     bondContractABI: LpBondContract,
     reserveContractAbi: LpReserveContract,
     networkAddrs: {
-        [Networks.AVAX]: {
+        [Networks.RINKEBY]: {
             bondAddress: "",    
-            reserveAddress: "0x90E81A2782EeB1F3199bF9f728A1123f3f92833e",
+            reserveAddress: "0xB30bC4d085464C1E7E26e859CBEF1F5338Df98bF",
         },
     },
     lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xaf9Fc588A9860F43236D6b390A538305A26AA81D",
@@ -67,9 +67,9 @@ export const avaxKandy = new CustomLPBond({
     bondContractABI: LpBondContract,
     reserveContractAbi: LpReserveContract,
     networkAddrs: {
-        [Networks.AVAX]: {
-            bondAddress: "0x1EC222CF5898D592Fc6969f5eD6207bc6C20d086",
-            reserveAddress: "0x3A577527C2194258dEcd06d65254d7EAb6af921C",
+        [Networks.RINKEBY]: {
+            bondAddress: "",
+            reserveAddress: "",
         },
     },
     lpUrl: "https://www.traderjoexyz.com/#/pool/AVAX/0xaf9Fc588A9860F43236D6b390A538305A26AA81D",

@@ -33,7 +33,11 @@ export class StableBond extends Bond {
         if (this.tokensInStrategy) {
             tokenAmount = BigNumber.from(tokenAmount).add(BigNumber.from(this.tokensInStrategy)).toString();
         }
+        if (token.address === "0xaCc58E44C73394c2FC12af9697bFD1D790ecA4B9") {
+            return tokenAmount / Math.pow(10, 6);    
+        }
         return tokenAmount / Math.pow(10, 18);
+        
     }
 
     public async getTokenAmount(networkID: Networks, provider: StaticJsonRpcProvider) {

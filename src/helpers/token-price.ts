@@ -10,6 +10,7 @@ export const loadTokenPrices = async () => {
     // cache["MIM"] = data["magic-internet-money"].usd;
     cache["AVAX"] = 88.61;
     cache["MIM"] = 1.00;
+    cache["USDT"] = 1.00;
 };
 
 export const getTokenPrice = (symbol: string): number => {
