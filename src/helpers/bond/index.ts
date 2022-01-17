@@ -2,7 +2,8 @@ import { Networks } from "../../constants/blockchain";
 import { LPBond, CustomLPBond } from "./lp-bond";
 import { StableBond, CustomBond } from "./stable-bond";
 
-import MimIcon from "../../assets/tokens/MIM.svg";
+// import MimIcon from "../../assets/tokens/MIM.svg";
+import USDTIcon from "../../assets/tokens/usdt.png";
 import AvaxIcon from "../../assets/tokens/AVAX.svg";
 import MimTimeIcon from "../../assets/tokens/KANDY-MIM.png";
 import AvaxTimeIcon from "../../assets/tokens/KANDY-AVAX.png";
@@ -13,7 +14,7 @@ export const mim = new StableBond({
     name: "usdt",
     displayName: "USDT",
     bondToken: "USDT",
-    bondIconSvg: MimIcon,
+    bondIconSvg: USDTIcon,
     bondContractABI: StableBondContract,
     reserveContractAbi: StableReserveContract,
     networkAddrs: {
