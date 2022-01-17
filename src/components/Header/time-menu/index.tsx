@@ -58,8 +58,8 @@ function TimeMenu() {
                 {({ TransitionProps }) => (
                     <Fade {...TransitionProps} timeout={200}>
                         <div className="tooltip">
-                            <Link className="tooltip-item" href={`https://www.traderjoexyz.com/#/trade?inputCurrency=&outputCurrency=${KANDY_ADDRESS}`} target="_blank">
-                                <p>Buy on Trader Joe</p>
+                            <Link className="tooltip-item" href={`https://app.uniswap.org/#/trade?inputCurrency=&outputCurrency=${KANDY_ADDRESS}`} target="_blank">
+                                <p>Buy on Uniswap</p>
                             </Link>
 
                             {/* {isEthereumAPIAvailable && (
