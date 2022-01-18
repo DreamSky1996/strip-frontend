@@ -17,3 +17,23 @@ export const prettifySeconds = (seconds?: number, resolution?: string) => {
 
     return dDisplay + hDisplay + mDisplay;
 };
+
+export const prettifySecondsforETH = (seconds?: number, resolution?: string) => {
+    if (seconds !== 0 && !seconds) {
+        return "";
+    }
+    let _seconds = seconds * 15;
+    const d = Math.floor(_seconds / (3600 * 24));
+    const h = Math.floor((_seconds % (3600 * 24)) / 3600);
+    const m = Math.floor((_seconds % 3600) / 60);
+
+    if (resolution === "day") {
+        return d + (d == 1 ? " day" : " days");
+    }
+
+    const dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
+    const hDisplay = h > 0 ? h + (h == 1 ? " Hour, " : " Hours, ") : "";
+    const mDisplay = m > 0 ? m + (m == 1 ? " Min" : " Mins") : "";
+
+    return dDisplay + hDisplay + mDisplay;
+};

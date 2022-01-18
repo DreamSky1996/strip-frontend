@@ -1,4 +1,4 @@
-import { prettifySeconds } from "./prettify-seconds";
+import { prettifySecondsforETH } from "./prettify-seconds";
 import { secondsUntilBlock } from "./seconds-until-block";
 
 export const prettyVestingPeriod = (currentBlock: number, vestingBlock: number) => {
@@ -10,5 +10,5 @@ export const prettyVestingPeriod = (currentBlock: number, vestingBlock: number) 
     if (seconds < 0) {
         return "Fully Vested";
     }
-    return prettifySeconds(seconds);
+    return prettifySecondsforETH(seconds);
 };

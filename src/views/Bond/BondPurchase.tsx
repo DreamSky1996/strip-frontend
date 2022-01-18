@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Box, OutlinedInput, InputAdornment, Slide, FormControl } from "@material-ui/core";
-import { shorten, trim, prettifySeconds } from "../../helpers";
+import { shorten, trim, prettifySecondsforETH } from "../../helpers";
 import { changeApproval, bondAsset, calcBondDetails } from "../../store/slices/bond-slice";
 import { useWeb3Context } from "../../hooks";
 import { IPendingTxn, isPendingTxn, txnButtonText } from "../../store/slices/pending-txns-slice";
@@ -33,7 +33,7 @@ function BondPurchase({ bond, slippage }: IBondPurchaseProps) {
     });
 
     const vestingPeriod = () => {
-        return prettifySeconds(bond.vestingTerm, "day");
+        return prettifySecondsforETH(bond.vestingTerm, "day");
     };
 
     async function onBond() {
